@@ -26,7 +26,7 @@ public class FeedbackService {
     private FeedbackDto convertToDto(Feedback feedback) {
         FeedbackDto dto = new FeedbackDto();
         dto.setId(feedback.getId());
-        dto.setHotel_id(feedback.getHotel_id());
+        dto.setHotel_id(feedback.getHotel().getId()); // get the id from the Hotel object
         dto.setRating(feedback.getRating());
         dto.setComment(feedback.getComment());
         return dto;

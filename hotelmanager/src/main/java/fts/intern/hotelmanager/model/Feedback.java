@@ -1,21 +1,31 @@
 package fts.intern.hotelmanager.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "feedback")
 public class Feedback {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private Long user_id;
-    private Long hotel_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "feedback_id")
+    private int id;
+
+    @Column(name = "username")
+    private String username;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_feedback_hotel_id", referencedColumnName = "id")
+    private Hotel hotel;
+
+    @Column(name = "rating")
     private Double rating;
+
+    @Column(name = "comment")
     private String comment;
 }

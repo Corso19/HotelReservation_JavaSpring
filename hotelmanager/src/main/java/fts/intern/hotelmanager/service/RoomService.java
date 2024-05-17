@@ -25,7 +25,11 @@ public class RoomService {
 
     private RoomDto convertToDto(Room room) {
         RoomDto dto = new RoomDto();
-        // set fields as necessary
+        dto.setRoomNumber(room.getRoomNumber());
+        dto.setHotelId(room.getHotel().getId());
+        dto.setType(room.getType());
+        dto.setPrice(room.getPrice());
+        dto.setIsAvailable(room.getIsAvailable());
         return dto;
     }
 }

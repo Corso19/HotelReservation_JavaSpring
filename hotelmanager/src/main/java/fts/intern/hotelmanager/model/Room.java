@@ -1,27 +1,35 @@
 package fts.intern.hotelmanager.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
+import java.io.Serializable;
+
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "room")
 public class Room {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private Integer number;
-    private Integer type;
-    private int price;
-    private Boolean isAvailable;
+    private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 
+    @Column(name = "roomNumber")
+    private Integer roomNumber;
 
+    @Column(name = "type")
+    private Integer type;
+
+    @Column(name = "price")
+    private int price;
+
+    @Column(name = "isAvailable")
+    private Boolean isAvailable;
 }

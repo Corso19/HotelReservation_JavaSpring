@@ -20,5 +20,6 @@ public class Reservations {
     private LocalDate endDate;
 
     @ManyToOne
+    @JoinColumn(name = "room")
     private Room room;
 }
