@@ -1,11 +1,11 @@
 package fts.intern.hotelmanager.model;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import lombok.*;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 import static jakarta.persistence.GenerationType.AUTO;
@@ -15,10 +15,12 @@ import static jakarta.persistence.GenerationType.AUTO;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class Hotel {
     @Id
     @GeneratedValue(strategy = AUTO)
-    private Long id;
+    private Integer id;
     private String name;
     private String address;
     private Double latitude;

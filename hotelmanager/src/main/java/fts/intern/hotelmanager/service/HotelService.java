@@ -1,10 +1,12 @@
 package fts.intern.hotelmanager.service;
 
 import fts.intern.hotelmanager.dto.HotelDto;
+import fts.intern.hotelmanager.model.Hotel;
 import fts.intern.hotelmanager.repository.HotelRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class HotelService {
@@ -16,9 +18,18 @@ public class HotelService {
     }
 
     public List<HotelDto> getAllHotels() {
-        // Fetch all hotels from the repository, convert them to DTOs and return
-        return null;
+        return hotelRepository.findAll().stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
-    // Add other methods as needed
+    private HotelDto convertToDto(Hotel hotel) {
+        HotelDto dto = new HotelDto();
+        dto.setId(hotel.getId());
+        dto.setName(hotel.getName());
+        dto.setLatitude(hotel.getLatitude());
+        dto.setLongitude(hotel.getLongitude());
+        // set other fields as necessary
+        return dto;
+    }
 }
