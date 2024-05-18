@@ -16,13 +16,63 @@
 
 <!-- The app selects the shortest distance between the user's location and the hotel's location. 
   Example from json: Ramada and grand italia by car are listed with different distances, but on foot, 
-  Grand italia is reachable in 5km. When the user inputs 5 (km), we are displayed both hotels-->
+  Grand italia is reachable in 5km. When the user inputs 5 (km), both hotels are displayed-->
 
 <div *ngFor="let hotel of hotels" class="hotel-actions-container">
   <h2>{{hotel.name}}</h2> 
   <p>{{hotel.address}}</p>
-  <button type="button" id="bookRoom">Book a Room</button>
-  <button type="button" id="leaveReview">Leave a Review</button>
+  <button type="button" id="bookRoom" (click)="openReservationModal(hotel)">Book a Room</button>
+  <button type="button" id="leaveReview" (click)="openReservationModal(hotel)">Leave a Review</button>
 </div>
+
+
+<!-- Feedback Modal -->
+<div class="modal" *ngIf="feedbackModal">
+  <button class="close-btn" (click)="feedbackModal = false">X</button>
+  <h2>Leave Feedback for {{selectedHotel?.name}}</h2>
+
+  <!-- Feedback Form -->
+  <form [formGroup]="feedbackForm" (ngSubmit)="submitFeedback()">
+    <label for="username">Username:</label>
+    <input id="username" type="text" formControlName="username">
+
+    <label for="comment">Comment:</label>
+    <textarea id="comment" formControlName="comment"></textarea>
+
+    <label for="rating">Rating:</label>
+    <select id="rating" formControlName="rating">
+      <option *ngFor="let num of [1, 2, 3, 4, 5]" [value]="num">{{num}}</option>
+    </select>
+
+    <button type="submit">Submit Feedback</button>
+  </form>
+
+  <!-- Existing feedback -->
+  <!-- ... -->
+</div>
+
+<!-- Reservation Modal -->
+<div class="modal" *ngIf="reservationModal">
+  <button class="close-btn" (click)="reservationModal = false">X</button>
+  <h2>Make a Reservation for {{selectedHotel?.name}}</h2>
+
+  <!-- Reservation Form -->
+  <form [formGroup]="reservationForm" (ngSubmit)="submitReservation()">
+    <label for="room">Room:</label>
+    <select id="room" formControlName="room" [(ngModel)]="selectedRoom">
+      <option *ngFor="let room of availableRooms" [value]="room.id" [ngValue]="room">{{room.roomNumber}}</option>
+    </select>
+
+    <label for="startDate">Start Date:</label>
+    <input id="startDate" type="date" formControlName="startDate">
+
+    <label for="endDate">End Date:</label>
+    <input id="endDate" type="date" formControlName="endDate">
+
+    <button type="submit">Submit Reservation</button>
+  </form>
+</div>
+
+
 
 

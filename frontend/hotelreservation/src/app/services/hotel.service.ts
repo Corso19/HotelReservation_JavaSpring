@@ -17,4 +17,10 @@ export class HotelService {
     const url = `${this.apiUrl}?rangeInKm=${range}&latitude=${latitude}&longitude=${longitude}`;
     return this.http.get<any>(url);
   }
+
+  getAvailableRooms(hotelId: string, startDate: string, endDate: string): Observable<any> {
+    const url = `http://localhost:8080/api/room/available`; // replace with your actual endpoint
+    return this.http.get<any>(url);
+  }
+
 }

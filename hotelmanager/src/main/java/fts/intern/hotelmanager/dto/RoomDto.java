@@ -10,5 +10,5 @@ public class RoomDto {
     private Integer hotelId;
     private Integer type;
     private int price;
-    private Boolean isAvailable;
+    private Boolean is_available;
 }

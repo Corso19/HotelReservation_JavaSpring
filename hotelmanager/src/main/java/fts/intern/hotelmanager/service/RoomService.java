@@ -23,13 +23,20 @@ public class RoomService {
                 .collect(Collectors.toList());
     }
 
+    public List<RoomDto> getAvailableRooms() {
+        List<Room> rooms = roomRepository.findAllByIsAvailable();
+        return rooms.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
     private RoomDto convertToDto(Room room) {
         RoomDto dto = new RoomDto();
         dto.setRoomNumber(room.getRoomNumber());
         dto.setHotelId(room.getHotel().getId());
         dto.setType(room.getType());
         dto.setPrice(room.getPrice());
-        dto.setIsAvailable(room.getIsAvailable());
+        dto.setIs_available(room.getIs_available());
         return dto;
     }
 }

@@ -31,5 +31,5 @@ public class Room {
     private int price;
 
     @Column(name = "isAvailable")
-    private Boolean isAvailable;
+    private Boolean is_available;
 }

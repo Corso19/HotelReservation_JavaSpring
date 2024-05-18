@@ -23,8 +23,8 @@ public class HotelController {
     public ResponseEntity<List<HotelDto>> getAllHotels(@RequestParam(value = "latitude", required = false) Double latitude,
                                                        @RequestParam(value = "longitude", required = false) Double longitude,
                                                        @RequestParam(value = "rangeInKm", required = false) Double rangeInKm) {
-        latitude = latitude != null ? latitude : 46.763214;
-        longitude = longitude != null ? longitude : 23.585467;
+        latitude = latitude != null ? latitude : 0;
+        longitude = longitude != null ? longitude : 0;
         rangeInKm = rangeInKm != null ? rangeInKm : 1.0; // default values in case frontend falls apart as it usually does :(
 
         return ResponseEntity.ok(hotelService.getAllHotels(latitude, longitude, rangeInKm));
