@@ -1,0 +1,67 @@
+.range-input-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.range-input-container label {
+    margin-bottom: 10px;
+}
+
+.range-input-container input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.range-input-container button {
+    padding: 10px;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.hotel-actions-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-actions-container h2, .hotel-actions-container p {
+    margin-bottom: 10px;
+}
+
+.hotel-actions-container button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#bookRoom {
+    background-color: #4CAF50; /* Green */
+}
+
+#leaveReview {
+    background-color: #008CBA; /* Blue */
+}
